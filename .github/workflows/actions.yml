@@ -3,32 +3,32 @@ name: testing calculator
 on:
   push:
     branches:
-      -main
+      - main
   pull_request:
     branches:
-      -main
+      - main
 jobs:
   test_cases:
     runs-on: ubuntu-latest
     steps:
-      -name: checkout code
-      uses: actions/checkout@v
+      - name: checkout code
+        uses: actions/checkout@v
 
-      -name: install dependencies
-      runs: |
-        sudo apt-get update 
-        sudo apt-get install -y python3 python3-pip
-        pip install -r requirement.txt
+      - name: install dependencies
+        runs: |
+          sudo apt-get update 
+          sudo apt-get install -y python3 python3-pip
+          pip install -r requirement.txt
 
-      -name: run test_cases
-      run: python3 -m unitest test_calculator.py
+      - name: run test_cases
+        run: python3 -m unitest test_calculator.py
 
 deploy: 
   needs: test_cases
   runs-on: ubuntu-latest
   steps:
-    -name: checkout code
-    uses: actions/checkout@v2
+    - name: checkout code
+      uses: actions/checkout@v2
 
-    -name: deploy application
-    run: echo " deploying application"      
+    - name: deploy application
+      run: echo " deploying application"      
